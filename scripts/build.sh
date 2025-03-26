@@ -18,5 +18,7 @@ fi
 
 build
 
+mkdir -p "$(dirname "$RELEASE_FILE")"
+
 rm -rf "$RELEASE_FILE"
 tar -C "$ROOT_DIR/install" -czvf "$RELEASE_FILE" "${INSTALL_DIR#$ROOT_DIR/install/}"

@@ -34,6 +34,6 @@ if ( ! $AWS sts get-caller-identity >/dev/null 2>&1); then
   $AWS configure
 fi
 
-VESRION=$(git log -1 --pretty=format:%H $PROJECT)
+VERSION=$(git log -1 --pretty=format:%H $PROJECT)
 
 $AWS s3 cp "$RELEASE_FILE" s3://bazel-assets/$PROJECT/${OS}_${ARCH}/$VERSION.tar.gz
