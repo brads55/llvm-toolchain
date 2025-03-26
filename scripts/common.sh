@@ -7,6 +7,13 @@ if [ -z "${PROJECT-}" ]; then
   exit 1
 fi
 
+ROOT_DIR="$(realpath "$(dirname "$0")/..")"
+
+if [ ! -e "$ROOT_DIR/$PROJECT" ]; then
+  echo "Must specify valid project" >&2
+  exit 1
+fi
+
 OS="$(uname)"
 OS="${OS/_*}"
 ARCH="$(uname -m)"
@@ -34,7 +41,6 @@ fi
 
 NPROC=$(nproc)
 
-ROOT_DIR="$(realpath "$(dirname "$0")/..")"
 BUILD_DIR="$ROOT_DIR/build/$PROJECT"
 INSTALL_DIR="$ROOT_DIR/install/$PROJECT"
 RELEASE_FILE="$ROOT_DIR/release/$PROJECT-$OS-$ARCH.tar.gz"
